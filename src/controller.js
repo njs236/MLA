@@ -1,5 +1,6 @@
 mla.controller = (function (){
     var initModule, Controller, selectedWord, newVocabulary, splicedVocabulary, newTable;
+    splicedVocabulary = [];
     
     Controller = function (view,model) {
         this.view = view;
@@ -24,15 +25,23 @@ mla.controller = (function (){
     
     Controller.prototype.loadVocabulary = function (vocabulary) {
         newVocabulary = vocabulary.allMyWords.slice();
+        this.loadSplicedVocabulary();
         return {newVocabulary, vocabulary};
         
     }
     
+    Controller.prototype.loadSplicedVocabulary = function () {
+        splicedVocabulary = newVocabulary.slice();
+    }
+    
     Controller.prototype.randomSelectionOfWord = function () {
-        var rand = Math.rand*vocabulary.length;
-        selectedWord = vocabulary[rand];
-        splicedVocabulary = newVocabulary.splice(rand, 1);
+        console.log(splicedVocabulary);
+        var rand = Math.floor(Math.random())*splicedVocabulary.length;
+        selectedWord = splicedVocabulary[rand];
         console.log(selectedWord);
+
+        splicedVocabulary.splice(rand, 1);
+        return selectedWord;
         
     }
     

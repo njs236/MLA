@@ -1,6 +1,7 @@
 mla.test = {
     model: null,
     controller : null,
+    newVocabulary: null,
     initialize : function (model, controller) {
         this.model = model;
         this.controller = controller;
@@ -12,14 +13,19 @@ mla.test = {
         of the original vocabulary for the purpose of random selection.
         */
     var rand = Math.floor(Math.random()) * mla.test.model.allMyVocabulary.length;
-    console.log(rand);
-    console.log(mla.test.model.allMyVocabulary)
         var vocabulary = mla.test.controller.loadVocabulary(mla.test.model.allMyVocabulary[rand])
         console.log(vocabulary)
+        mla.test.newVocabulary = vocabulary.newVocabulary;
     },
     
     loadWord : function () {
-    mla.test.controller.randomSelectionOfWord();
+        /*Expectation:
+        
+        returns a word from a list of vocabulary that has been loaded. 
+        */
+        var word;
+        word = mla.test.controller.randomSelectionOfWord();
+        console.log(word);
     }
 }
 
