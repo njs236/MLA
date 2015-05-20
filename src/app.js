@@ -1,0 +1,13 @@
+var mla = {};
+
+mla = (function () {
+    var initModule = function () {
+        var view = mla.view.initModule({levelScreen: document.getElementById('selectScreen'),
+        resultsScreen: document.getElementById('resultsScreen')});
+        var model = mla.model.initModule();
+        var controller = mla.controller.initModule(view, model);
+        controller.Vocabulary();
+    }
+    
+    return {initModule: initModule};
+}())
