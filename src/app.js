@@ -7,6 +7,7 @@ mla = (function () {
         var model = mla.model.initModule();
         var controller = mla.controller.initModule(view, model);
         controller.Vocabulary();
+        mla.test.initialize(model, controller);
     }
     
     return {initModule: initModule};

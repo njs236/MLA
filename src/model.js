@@ -3,6 +3,7 @@ mla.model = (function() {
     
     Model = function () {
         this.allMyVocabulary = [];
+        
         this.allMyWords = [];
     };
     

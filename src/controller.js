@@ -23,23 +23,16 @@ mla.controller = (function (){
     }
     
     Controller.prototype.loadVocabulary = function (vocabulary) {
-        console.log(vocabulary);
-        newVocabulary = vocabulary.slice;
+        newVocabulary = vocabulary.allMyWords.slice();
+        return {newVocabulary, vocabulary};
         
     }
     
-    Controller.prototype.loadWord = function (word) {
-        selectedWord = word;
-        this.randomSelectionOfWord()
-
-        console.log(word);
-        
-    }
-    
-    Controller.prototype.randomSelectionOfWord() {
+    Controller.prototype.randomSelectionOfWord = function () {
         var rand = Math.rand*vocabulary.length;
-        var selectedWord = vocabulary[rand];
+        selectedWord = vocabulary[rand];
         splicedVocabulary = newVocabulary.splice(rand, 1);
+        console.log(selectedWord);
         
     }
     
