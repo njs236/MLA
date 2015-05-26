@@ -1,0 +1,21 @@
+#selectScreenDiv {
+    position: absolute;
+    right: 50%;
+    bottom: -10%;
+    width: 30%;
+    height: 70%;
+}
+
+div.selectOptionsButton {
+    position: relative:
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5em;
+    text-align: center;
+    border: solid 1px;
+	border-color: black;
+    border-radius:0.5em;
+    cursor: pointer;
+    background-color: rgba(80, 80, 80, .8);
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 1)
+}

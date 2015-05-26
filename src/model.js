@@ -3,9 +3,17 @@ mla.model = (function() {
     
     Model = function () {
         this.allMyVocabulary = [];
-        
         this.allMyWords = [];
+        this.getMyVocabsForDisplay = function () {
+            var i;
+            var array = [];
+            for (i; i<allMyVocabulary.length; i++) {
+                array.push(allMyVocabulary[i].vocabName);
+            }
+            return array;
+        }
     };
+    
     
     Model.prototype.addVocabulary = function(vocabName, arrayOfWords) {
         var vocabulary = new Vocabulary(vocabName, arrayOfWords);

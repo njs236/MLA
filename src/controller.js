@@ -5,6 +5,7 @@ mla.controller = (function (){
     Controller = function (view,model) {
         this.view = view;
         this.model = model;
+        console.log(this);
     }
     
     Controller.prototype.Vocabulary = function () {
@@ -19,7 +20,7 @@ mla.controller = (function (){
     }
     
     Controller.prototype.displayLevelSelectScreen = function () {
-        
+        view.displayTable(model.getMyVocabsForDisplay())
         
     }
     
@@ -50,7 +51,6 @@ mla.controller = (function (){
     }
     
     initModule = function (view,model) {
-        view.setController(this);
         view.viewScreenListeners();
         return new Controller(view,model);  
     }

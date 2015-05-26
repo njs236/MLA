@@ -6,6 +6,7 @@ mla = (function () {
         resultsScreen: document.getElementById('resultsScreen')});
         var model = mla.model.initModule();
         var controller = mla.controller.initModule(view, model);
+        view.setController(controller);
         controller.Vocabulary();
         mla.test.initialize(model, controller);
     }

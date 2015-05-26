@@ -9,6 +9,11 @@ mla.view = (function () {
    View.prototype.setController = function (controller) {
        this.controller = controller;
    }
+   /*************************************
+   
+   screenSelection
+   
+   ****************************************/
    
    View.prototype.hideAllPages = function () {
     var i = 0;
@@ -20,7 +25,8 @@ mla.view = (function () {
 
 View.prototype.viewLevelSelectScreen = function (view) {
     aView.displayScreen(aView.elements.levelScreen);
-    aView.controller.displayLevelSelectScreen
+    console.log(aView);
+    aView.controller.displayLevelSelectScreen();
 }
 
 View.prototype.viewResultsScreen = function (view) {
@@ -52,6 +58,23 @@ View.prototype.viewScreenListeners = function () {
     /* Level Screen */
     
     /* Game Screen */
+    
+}
+
+/************************
+
+Select Screen
+
+*************************/
+
+View.prototype.displayTable = function (items) {
+    var selectScreenDiv = document.getElementById('selectScreenDiv');
+    for (i; i < items.length; i++) {
+        var div = document.createElement('DIV');
+        div.textContent = items[i];
+        div.className = 'selectOptionsButton';
+        selectScreenDiv.appendChild(div);
+    };
     
 }
 
