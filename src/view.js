@@ -29,9 +29,13 @@ View.prototype.viewLevelSelectScreen = function (view) {
     aView.controller.displayLevelSelectScreen();
 }
 
-View.prototype.viewResultsScreen = function (view) {
+View.prototype.viewResultsScreen = function () {
     aView.displayScreen(aView.elements.resultsScreen);
     
+}
+
+View.prototype.viewGameScreen = function () {
+    this.displayScreen(aView.elements.gameScreen);
 }
 
 View.prototype.viewHomeScreen = function () {
@@ -89,7 +93,7 @@ View.prototype.displayTable = function (items) {
         div = document.createElement('DIV');
         div.textContent = items[i];
         div.className = 'selectOptionsButton';
-        div.addEventListener("click", this.controller.selectGame(items[i]))
+        div.addEventListener("click", this.controller.selectGame(items[i]));
         selectScreenDiv.lastChild.appendChild(div);
     };
     /* The Back Button */
