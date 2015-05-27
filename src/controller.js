@@ -19,10 +19,33 @@ mla.controller = (function (){
         console.log(this.model.allMyVocabulary[0])
     }
     
+    /**********************************
+    
+    Select Screen
+    
+    **********************************/
+    
     Controller.prototype.displayLevelSelectScreen = function () {
-        view.displayTable(model.getMyVocabsForDisplay())
-        
+        console.log(this.model.getMyVocabsForDisplay())
+        this.view.displayTable(this.model.getMyVocabsForDisplay())
+ }
+    
+    Controller.prototype.selectGame = function (id) {
+        /* v1.0 This selects a vocablist and returns it for inspection 
+        */
+        var vocab = this.model.findVocab(id);
+        if (vocab != null) {
+        return vocab;       
+    } else {
+        alert(id + ' not found');
     }
+    }
+    
+    /******************************
+    
+    Game Screen
+    
+    *********************************/
     
     Controller.prototype.loadVocabulary = function (vocabulary) {
         newVocabulary = vocabulary.allMyWords.slice();

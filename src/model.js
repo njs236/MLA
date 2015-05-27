@@ -1,24 +1,36 @@
 mla.model = (function() {
-    var initModule, Model;
+    var initModule, Model, Word, Vocabulary;
     
     Model = function () {
         this.allMyVocabulary = [];
         this.allMyWords = [];
-        this.getMyVocabsForDisplay = function () {
-            var i;
+    };
+    
+    Model.prototype.getMyVocabsForDisplay = function () {
+            var i = 0;
             var array = [];
-            for (i; i<allMyVocabulary.length; i++) {
-                array.push(allMyVocabulary[i].vocabName);
+            for (i; i<this.allMyVocabulary.length; i++) {
+                array.push(this.allMyVocabulary[i].vocabName);
             }
             return array;
         }
-    };
-    
+        
+    Model.prototype.findVocab = function (id) {
+        var i = 0;
+        for (i; this.allMyVocabulary.length; i++ ) {
+            if (this.allMyVocabulary[i].vocabName == id ) {
+                return this.allMyVocabulary[i];
+            }
+        }
+        return;
+    }
     
     Model.prototype.addVocabulary = function(vocabName, arrayOfWords) {
         var vocabulary = new Vocabulary(vocabName, arrayOfWords);
         this.allMyVocabulary.push(vocabulary);
+        return vocabulary;
     }
+    
     
     Vocabulary = function (vocabName, arrayOfWords) {
         this.vocabName = vocabName;
@@ -36,7 +48,7 @@ mla.model = (function() {
     */
     var i = 0;
     for (i; i < newArrayOfWords.length/ 2; i++) {
-        var word = new Word(this.vocabName+i, newArrayOfWords[2*i], newArrayOfWords[2*i+1])
+        var word = new Word(this.vocabName+i, newArrayOfWords[2*i+1], newArrayOfWords[2*i])
     this.allMyWords.push(word);
     }     
     }
@@ -46,6 +58,8 @@ mla.model = (function() {
         this.englishWord = newEnglishWord;
         this.maoriWord = newMaoriWord;
     }
+    
+    
     
     initModule = function () {
         return new Model;

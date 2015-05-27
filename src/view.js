@@ -34,6 +34,10 @@ View.prototype.viewResultsScreen = function (view) {
     
 }
 
+View.prototype.viewHomeScreen = function () {
+    aView.displayScreen(aView.elements.homeScreen);
+}
+
 View.prototype.quitGame = function () {
     location.href = "#quitModal";
 }
@@ -68,13 +72,35 @@ Select Screen
 *************************/
 
 View.prototype.displayTable = function (items) {
+    console.log(items);
+    var i = 0;
+    var div;
     var selectScreenDiv = document.getElementById('selectScreenDiv');
+    /* 
+    For clearing the data in the view;
+    */
+    while ( selectScreenDiv.hasChildNodes() ){
+			selectScreenDiv.removeChild(selectScreenDiv.firstChild);
+		};
     for (i; i < items.length; i++) {
-        var div = document.createElement('DIV');
+        var surroundingDiv = document.createElement('DIV');
+        surroundingDiv.className = 'selectContentsDiv';
+        selectScreenDiv.appendChild(surroundingDiv);
+        div = document.createElement('DIV');
         div.textContent = items[i];
         div.className = 'selectOptionsButton';
-        selectScreenDiv.appendChild(div);
+        div.addEventListener("click", this.controller.selectGame(items[i]))
+        selectScreenDiv.lastChild.appendChild(div);
     };
+    /* The Back Button */
+    var surroundingDiv = document.createElement('DIV');
+    surroundingDiv.className = 'selectContentsDiv';
+    selectScreenDiv.appendChild(surroundingDiv);
+    div = document.createElement('DIV');
+    div.textContent = 'Back';
+    div.addEventListener("click", this.viewHomeScreen)
+    div.className = 'selectOptionsButton';
+    selectScreenDiv.lastChild.appendChild(div);
     
 }
 

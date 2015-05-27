@@ -1,7 +1,12 @@
+div.selectContentsDiv {
+    height: 10%;
+    width: 100%;
+}
+
 #selectScreenDiv {
     position: absolute;
     right: 50%;
-    bottom: -10%;
+    top: 10%;
     width: 30%;
     height: 70%;
 }
