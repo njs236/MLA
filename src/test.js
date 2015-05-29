@@ -64,6 +64,16 @@ mla.test = {
         */
         var vocab = mla.test.model.addVocabulary(vocabName, array);
         console.log(vocab)
+    },
+    
+    findWord : function (id) {
+        /* expectation: should return a word according to the name of its container
+        
+        */
+        
+        var word = mla.test.model.findWord(id);
+        console.log(word);
     }
+    
 }
 

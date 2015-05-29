@@ -6,6 +6,19 @@ mla.model = (function() {
         this.allMyWords = [];
     };
     
+    Model.prototype.findWord = function (id) {
+        var vocabLoop = 0, wordLoop = 0;
+        for (vocabLoop; vocabLoop < this.allMyVocabulary.length; vocabLoop++){
+            wordLoop = 0;
+            for (wordLoop; wordLoop < this.allMyVocabulary[vocabLoop].allMyWords.length; wordLoop++) {
+                if (this.allMyVocabulary[vocabLoop].allMyWords[wordLoop].Name == id) {
+                    return this.allMyVocabulary[vocabLoop].allMyWords[wordLoop];
+                }
+            }
+        }
+        return ;
+    }
+    
     Model.prototype.getMyVocabsForDisplay = function () {
             var i = 0;
             var array = [];
@@ -58,8 +71,6 @@ mla.model = (function() {
         this.englishWord = newEnglishWord;
         this.maoriWord = newMaoriWord;
     }
-    
-    
     
     initModule = function () {
         return new Model;

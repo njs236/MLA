@@ -31,14 +31,13 @@ mla.controller = (function (){
  }
     
     Controller.prototype.selectGame = function (id) {
-        /* v1.0 This selects a vocablist and returns it for inspection 
+        /* v1.1 Prepares the view for the game and gives information to the view.
         */
-        var vocab = this.model.findVocab(id);
-        if (vocab != null) {
-        return vocab;       
-    } else {
-        alert(id + ' not found');
-    }
+        var vocab = this.model.findVocab(id), word;
+        this.loadVocabulary(vocab);
+        word = this.randomSelectionOfWord();
+        this.view.viewGameScreen();
+
     }
     
     /******************************
