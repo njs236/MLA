@@ -97,6 +97,7 @@ mla.model = (function() {
             for (i; i<this.allMyVocabulary.length; i++) {
                 array.push(this.allMyVocabulary[i].vocabName);
             }
+            console.log(array);
             return array;
         }
         

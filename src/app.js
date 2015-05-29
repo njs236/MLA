@@ -2,14 +2,9 @@ var mla = {};
 
 mla = (function () {
     var initModule = function () {
-        var view = mla.view.initModule({levelScreen: document.getElementById('selectScreen'),
-        resultsScreen: document.getElementById('resultsScreen'),
-        homeScreen: document.getElementById('mainScreen'),
-        gameScreen: document.getElementById('gameScreen')});
-        var model = mla.model.initModule();
-        var controller = mla.controller.initModule(view, model);
-        view.setController(controller);
-        controller.Vocabulary();
+     
+        var controller = mla.controller.initModule();
+        var model = controller.returnModel();
         mla.test.initialize(model, controller);
     }
     
