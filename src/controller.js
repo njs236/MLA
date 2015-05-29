@@ -16,7 +16,31 @@ mla.controller = (function (){
         this.model.addVocabulary('personal pronouns', ['au','I or me','koe','You','ia','he or she','tāua','Us two','māua','Us two (Excludes listener)','kōrua','You two','rāua','Those two','tātou','Us all','mātou','Us all (3 or more) (Excludes listener)','koutou','You all (3 or more)','rātou','Them all (three or more)'])
         this.model.addVocabulary('possession/you and I',['Taku/Tōku','My','Tana/Tōna','His/hers','Tau/Tōu','Yours','Aku/Ōku,Mine','ahau','I or me','au','I or me','koe','You','ia','He or She','Ko wai?','Who?'])
         this.model.addVocabulary('Saying How You Are',['Kei te pēhea koe?','How are you?','Kei te pai','Good','Kei te māuiui','Sick','Kei te ngenge','Tired','Kei te wherū','Under the weather','Kei te ora','Living','Kei te rūhā','Worn out or Exhausted','Kei te hiakai','Hungry','Kei te hiamoe','Sleepy','Kei te hia inu','Thirsty','Kei te kaha tonu','Still going strong','Kei te pērā tonu','Same ole','Kei te pokea e te mahi','Overworked','Kei raro e putu ana','Snowed under','Kāore i te pai','Not good'])
-        console.log(this.model.allMyVocabulary[0])
+        // awa
+        var word = this.model.findWord('environment2');
+        
+        //ika
+        var word = this.model.findWord('environment1');
+        //kereru
+        var word = this.model.findWord('environment8');
+        //kiore
+        var word = this.model.findWord('environment2');
+        //kiwi
+        var word = this.model.findWord('environment2');
+        //manu
+        var word = this.model.findWord('environment2');
+        //maunga
+        var word = this.model.findWord('environment2');
+        //moana
+        var word = this.model.findWord('environment2');
+        //ngahere
+        var word = this.model.findWord('environment2');
+        //piwakawaka
+        var word = this.model.findWord('environment2');
+        //puke
+        var word = this.model.findWord('environment2');
+        //roto
+        var word = this.model.findWord('environment2');
     }
     
     /**********************************
@@ -72,9 +96,16 @@ mla.controller = (function (){
         
     }
     
-    initModule = function (view,model) {
+    initModule = function () {
+        var view = mla.view.initModule({levelScreen: document.getElementById('selectScreen'),
+        resultsScreen: document.getElementById('resultsScreen'),
+        homeScreen: document.getElementById('mainScreen'),
+        gameScreen: document.getElementById('gameScreen')});
+        var model = mla.model.initModule();
+        var controller = new Controller(view,model)
         view.viewScreenListeners();
-        return new Controller(view,model);  
+        view.setController(controller);
+        return controller;  
     }
     
     return {initModule:initModule};

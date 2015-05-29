@@ -73,6 +73,12 @@ mla.test = {
         
         var word = mla.test.model.findWord(id);
         console.log(word);
+    },
+    
+    returnAllFilesWithImagesOrSounds : function () {
+        var array = mla.test.model.withMedia();
+        console.log(array);
+        
     }
     
 }
