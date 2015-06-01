@@ -89,7 +89,7 @@ mla.model = (function() {
             }
         }
         return ;
-    }
+    };
     
     Model.prototype.getMyVocabsForDisplay = function () {
             var i = 0;
@@ -99,7 +99,7 @@ mla.model = (function() {
             }
             console.log(array);
             return array;
-        }
+        };
         
     Model.prototype.findVocab = function (id) {
         var i = 0;
@@ -109,20 +109,20 @@ mla.model = (function() {
             }
         }
         return;
-    }
+    };
     
     Model.prototype.addVocabulary = function(vocabName, arrayOfWords) {
         var vocabulary = new Vocabulary(vocabName, arrayOfWords);
         this.allMyVocabulary.push(vocabulary);
         return vocabulary;
-    }
+    };
     
     
     Vocabulary = function (vocabName, arrayOfWords) {
         this.vocabName = vocabName;
         this.allMyWords = [];
         this.addWords(arrayOfWords);
-    }
+    };
     
     Vocabulary.prototype.addWords = function(newArrayOfWords) {
        /*
