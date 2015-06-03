@@ -143,6 +143,18 @@ mla.model = (function() {
         this.Name = newName;
         this.englishWord = newEnglishWord;
         this.maoriWord = newMaoriWord;
+        this.getEnglishWord = function () {
+            return this.englishWord;
+        }
+    }
+    
+    Array.prototype.isValidIndex = function (number) {
+        return this.indexOf(number) !== -1
+    }
+    
+    Array.protype.randomizeArray = function (array) {
+        var lengthOfArray = array.length;
+        var randPosition = Math.floor(Math.random() * (lengthOfArray - 1));
     }
     
     initModule = function () {

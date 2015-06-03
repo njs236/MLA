@@ -12,7 +12,7 @@ mla.test = {
         The test function should return a list of vocabulary, that should be a copy
         of the original vocabulary for the purpose of random selection.
         */
-    var rand = Math.floor(Math.random()) * mla.test.model.allMyVocabulary.length;
+    var rand = Math.floor(Math.random()*( mla.test.model.allMyVocabulary.length-1)) ;
         var vocabulary = mla.test.controller.loadVocabulary(mla.test.model.allMyVocabulary[rand])
         console.log(vocabulary)
         mla.test.newVocabulary = vocabulary.newVocabulary;
@@ -79,7 +79,15 @@ mla.test = {
         var array = mla.test.model.withMedia();
         console.log(array);
         
-    }
+    },
+    
+    displayWord : function (numberOfWords) {
+        mla.test.loadVocabulary();
+        mla.test.loadWord();
+        array = mla.test.controller.loadTable(numberOfWords);
+        
+        console.log(array);
+    } 
     
 }
 
