@@ -97,13 +97,13 @@ mla.model = (function() {
             for (i; i<this.allMyVocabulary.length; i++) {
                 array.push(this.allMyVocabulary[i].vocabName);
             }
-            console.log(array);
             return array;
         };
         
     Model.prototype.findVocab = function (id) {
         var i = 0;
-        for (i; this.allMyVocabulary.length; i++ ) {
+        console.log(this);
+        for (i; i < this.allMyVocabulary.length; i++ ) {
             if (this.allMyVocabulary[i].vocabName == id ) {
                 return this.allMyVocabulary[i];
             }

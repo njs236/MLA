@@ -3,29 +3,30 @@ mla.controller = (function (){
     splicedVocabulary = [];
     
     Controller = function (view1, model1) {
-       var view = view1;
-        console.log(view);
-        var model = model1;
-        console.log(model);
+        var that = this;
+       this.view = view1;
+        this.model = model1;
         this.returnModel = function () {
-            return model;
+            return this.model;
         };
+        this.returnView = function () {
+            return this.view;
+        }
         this.display = function () {
-            var items = model.getMyVocabsForDisplay();
-            view.writeSelectTable(items);
+            var items = that.model.getMyVocabsForDisplay();
+            that.view.writeSelectTable(items);
         };
         
         this.selectGame = function (id) {
         /* v1.1 Prepares the view for the game and gives information to the view.
         */
-        view.viewGameScreen(function () {
-        var vocab = this.model.findVocab(id), word;
-        this.loadVocabulary(vocab);
+        console.log(id);
+        that.view.viewGameScreen();
+        var vocab = that.model.findVocab(id), word;
+        that.loadVocabulary(vocab);
         console.log(newVocabulary);
-        word = this.randomSelectionOfWord();
-        var array = [word, ]
-        view.displayWord();
-        })
+        word = that.randomSelectionOfWord();
+        that.loadTable();
     }
     };
     
@@ -44,6 +45,7 @@ mla.controller = (function (){
     *********************************/
     
     Controller.prototype.loadVocabulary = function (vocabulary) {
+        console.log(vocabulary);
         newVocabulary = vocabulary.allMyWords.slice();
         this.loadSplicedVocabulary();
         return {newVocabulary, vocabulary};
@@ -96,7 +98,7 @@ mla.controller = (function (){
     }
         // sends data to view;
         array.randomizeArray();
-        return array;
+        that.view.displayTextQuestion();
     }
     
     initModule = function () {

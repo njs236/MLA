@@ -7,7 +7,6 @@ mla.view = (function () {
    
    View.prototype.setController = function (controller) {
        this.controller = controller;
-       console.log(this.controller);
    }
    /*************************************
    
@@ -27,41 +26,7 @@ mla.view = (function () {
         aView.displayScreen(aView.elements.levelScreen);
     }
 
-View.prototype.writeSelectTable = function (items) {
-    
-    var i = 0;
-    var div;
-    var selectScreenDiv = document.getElementById('selectScreenDiv');
-    console.log(selectScreenDiv);
-    /* 
-    For clearing the data in the view;
-    */
-    while ( selectScreenDiv.hasChildNodes() ){
-			selectScreenDiv.removeChild(selectScreenDiv.firstChild);
-		};
-    for (i; i < items.length; i++) {
-        var surroundingDiv = document.createElement('DIV');
-        surroundingDiv.className = 'selectContentsDiv';
-        selectScreenDiv.appendChild(surroundingDiv);
-        div = document.createElement('DIV');
-        div.textContent = items[i];
-        div.className = 'selectOptionsButton';
-        div.addEventListener("click",function () {
-         aView.controller.selectGame(items[i])  
-        });
-        selectScreenDiv.lastChild.appendChild(div);
-    };
-    /* The Back Button */
-    var surroundingDiv = document.createElement('DIV');
-    surroundingDiv.className = 'selectContentsDiv';
-    selectScreenDiv.appendChild(surroundingDiv);
-    div = document.createElement('DIV');
-    div.textContent = 'Back';
-    div.addEventListener("click", this.viewHomeScreen)
-    div.className = 'selectOptionsButton';
-    selectScreenDiv.lastChild.appendChild(div);
-    
-}
+
 
 View.prototype.viewResultsScreen = function () {
     aView.displayScreen(aView.elements.resultsScreen);
@@ -70,7 +35,6 @@ View.prototype.viewResultsScreen = function () {
 
 View.prototype.viewGameScreen = function (callback) {
     this.displayScreen(aView.elements.gameScreen);
-    callback;
 }
 
 View.prototype.viewHomeScreen = function () {
@@ -109,7 +73,39 @@ Select Screen
 
 *************************/
 
-
+View.prototype.writeSelectTable = function (items) {
+    var i = 0;
+    var div;
+    var selectScreenDiv = document.getElementById('selectScreenDiv');
+    /* 
+    For clearing the data in the view;
+    */
+    while ( selectScreenDiv.hasChildNodes() ){
+			selectScreenDiv.removeChild(selectScreenDiv.firstChild);
+		};
+    for (i; i < items.length; i++) {
+        var surroundingDiv = document.createElement('DIV');
+        surroundingDiv.className = 'selectContentsDiv';
+        selectScreenDiv.appendChild(surroundingDiv);
+        div = document.createElement('DIV');
+        div.textContent = items[i];
+        div.className = 'selectOptionsButton';
+        div.addEventListener("click",function () {
+         aView.controller.selectGame(items[i])         
+        });
+        selectScreenDiv.lastChild.appendChild(div);
+    };
+    /* The Back Button */
+    var surroundingDiv = document.createElement('DIV');
+    surroundingDiv.className = 'selectContentsDiv';
+    selectScreenDiv.appendChild(surroundingDiv);
+    div = document.createElement('DIV');
+    div.textContent = 'Back';
+    div.addEventListener("click", this.viewHomeScreen)
+    div.className = 'selectOptionsButton';
+    selectScreenDiv.lastChild.appendChild(div);
+    
+}
 
 
 /*************************
@@ -121,10 +117,9 @@ Game Screen
 View.prototype.displayTextQuestion = function (array) {
     /*Array:
     [0] = Word for display;
-    [1] = Words chosen at Random;
-    [1][0-3] = Words chosen at random;
+    [1-4] = Words chosen at Random;
     */
-    var i = 0;
+    var i = 1;
     var question = document.getElementById('gameScreenWord');
     
     var gameOptions = document.getElementsByClassName('gameOption');
@@ -132,7 +127,7 @@ View.prototype.displayTextQuestion = function (array) {
     question.textContent = array[0];
     
     for (i; i < gameOptions.length; i++) {
-        gameOptions[i].textContent = array[1][i];
+        gameOptions[i].textContent = array[i];
     };
 }
 

@@ -5,7 +5,8 @@ mla = (function () {
      
         var controller = mla.controller.initModule();
         var model = controller.returnModel();
-        mla.test.initialize(model, controller);
+        var view = controller.returnView();
+        mla.test.initialize(model, controller, view);
     }
     
     return {initModule: initModule};

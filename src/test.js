@@ -2,9 +2,11 @@ mla.test = {
     model: null,
     controller : null,
     newVocabulary: null,
-    initialize : function (model, controller) {
+    view: null,
+    initialize : function (model, controller, view) {
         this.model = model;
         this.controller = controller;
+        this.view = view;
     },
     
     loadVocabulary : function () {
