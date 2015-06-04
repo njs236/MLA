@@ -95,7 +95,7 @@ mla.controller = (function (){
         array.push(newVocabulary[randArray[i]]);
     }
         // sends data to view;
-        
+        array.randomizeArray();
         return array;
     }
     

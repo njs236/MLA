@@ -152,9 +152,10 @@ mla.model = (function() {
         return this.indexOf(number) !== -1
     }
     
-    Array.protype.randomizeArray = function (array) {
-        var lengthOfArray = array.length;
-        var randPosition = Math.floor(Math.random() * (lengthOfArray - 1));
+    Array.prototype.randomizeArray = function () {
+        var randPosition = Math.floor(Math.random() * (this.length- 1));
+    this.splice(randPosition, 0, this.splice(0, 1)[0]);
+    return this; // for testing purposes
     }
     
     initModule = function () {
