@@ -1,0 +1,9 @@
+#gameScreenLeft {
+    height: 100%;
+    width: 25%;
+}
+
+#gameScreenRight {
+    height:100%;
+    width: 75%;
+}

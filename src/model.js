@@ -146,6 +146,12 @@ mla.model = (function() {
         this.getEnglishWord = function () {
             return this.englishWord;
         }
+        this.getImage = function () {
+            return this.image;
+        }
+        this.getMaoriWord = function () {
+            return this.maoriWord;
+        }
     }
     
     Array.prototype.isValidIndex = function (number) {

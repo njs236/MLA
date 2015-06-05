@@ -17,6 +17,7 @@
 <link href="layout.css" type="text/css" rel="stylesheet">
 <link href="css/selectScreen.css" type="text/css" rel="stylesheet">
 <link href="Main_Layout.css" type="text/css" rel="stylesheet">
+<link href="css/gameScreen.css" type="text/css" rel="stylesheet">
 
 <!-- init files -->
 
@@ -26,6 +27,13 @@
     <div id="mainScreen" class="screen">
         <div>
             <div id="quitModal" class="modalScreen">
+                <div>
+                    <div><h1>Would you like to quit?</h1></div>
+                    <div>
+                        <img id="yes" src="images/yes.png" />
+                        <img id="no" src="images/no.png" />
+                    </div>
+                </div>
             </div>
             <div id="mainLeftArea">
                 <div class="mainSideDivs">
@@ -53,12 +61,16 @@
     </div>
     <div id="gameScreen" class="screen" hidden>
         <div>
-            <div id = "gameScreenQuestion">What is the Maori word for <span id="gameScreenWord">?</div>
-            <div id="gameScreenAnswers">
-                <div class="gameOption"></div>
-                <div class="gameOption"></div>
-                <div class="gameOption"></div>
-                <div class="gameOption"></div>
+            <div id="gameScreenLeft">
+            </div>
+            <div id="gameScreenRight">
+                <div id = "gameScreenQuestion">What is the Maori word for <span id="gameScreenWord">?</div>
+                <div id="gameScreenAnswers">
+                    <div class="gameOption"></div>
+                    <div class="gameOption"></div>
+                    <div class="gameOption"></div>
+                    <div class="gameOption"></div>
+                </div>
             </div>
         </div>
     </div>

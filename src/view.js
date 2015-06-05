@@ -45,6 +45,10 @@ View.prototype.quitGame = function () {
     location.href = "#quitModal";
 }
 
+View.prototype.no = function () {
+    location.href = "#";
+}
+
 View.prototype.displayScreen = function(screen) {
     this.hideAllPages();
     screen.hidden = false;
@@ -58,7 +62,8 @@ View.prototype.viewScreenListeners = function () {
     playGame.addEventListener("click", this.displayLevelSelectScreen);
     viewResults.addEventListener("click", this.viewResultsScreen);
     quit.addEventListener("click", this.quitGame);
-    
+    var no = document.getElementById('no');
+    no.addEventListener("click", this.no);
     /* Results Screen */
     
     /* Level Screen */
@@ -74,8 +79,7 @@ Select Screen
 *************************/
 
 View.prototype.writeSelectTable = function (items) {
-    var i = 0;
-    var div;
+    var i, div;
     var selectScreenDiv = document.getElementById('selectScreenDiv');
     /* 
     For clearing the data in the view;
@@ -83,15 +87,17 @@ View.prototype.writeSelectTable = function (items) {
     while ( selectScreenDiv.hasChildNodes() ){
 			selectScreenDiv.removeChild(selectScreenDiv.firstChild);
 		};
-    for (i; i < items.length; i++) {
+    for (i = 0; i < items.length; i++) {
         var surroundingDiv = document.createElement('DIV');
         surroundingDiv.className = 'selectContentsDiv';
         selectScreenDiv.appendChild(surroundingDiv);
         div = document.createElement('DIV');
         div.textContent = items[i];
+        div.setAttribute('id', i);
         div.className = 'selectOptionsButton';
+        var k = i.valueOf();
         div.addEventListener("click",function () {
-         aView.controller.selectGame(items[i])         
+         aView.controller.selectGame(items[k]);         
         });
         selectScreenDiv.lastChild.appendChild(div);
     };
@@ -119,16 +125,40 @@ View.prototype.displayTextQuestion = function (array) {
     [0] = Word for display;
     [1-4] = Words chosen at Random;
     */
-    var i = 1;
+    var i;
     var question = document.getElementById('gameScreenWord');
     
     var gameOptions = document.getElementsByClassName('gameOption');
+    console.log(gameOptions.length);
     
     question.textContent = array[0];
     
-    for (i; i < gameOptions.length; i++) {
-        gameOptions[i].textContent = array[i];
+    for (i = 1; i <= gameOptions.length; i++) {
+        gameOptions[i-1].textContent = array[i];
     };
+};
+
+View.prototype.displayImageQuestion = function (array) {
+    var question = document.getElementById('gameScreenQuestion');
+    
+    var gameOptions = document.getElementsByClassName('gameOption');
+    
+    var image;
+    /* 
+    For clearing the data in the view;
+    */
+    while ( question.hasChildNodes() ){
+			question.removeChild(question.firstChild);
+		};
+        
+    /*Array:
+    [0] = Image for display;
+    [1-4] = Words chosen at Random;
+    */
+    image = document.createElement('IMG');
+    image.src = array[0];
+    question.innerHTML = 'What is this a picture of?' + image; 
+    
 }
 
     initModule = function (elements) {

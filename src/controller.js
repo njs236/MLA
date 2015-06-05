@@ -25,8 +25,8 @@ mla.controller = (function (){
         var vocab = that.model.findVocab(id), word;
         that.loadVocabulary(vocab);
         console.log(newVocabulary);
-        word = that.randomSelectionOfWord();
-        that.loadTable();
+        that.randomSelectionOfWord();
+        that.loadTable(4);
     }
     };
     
@@ -61,7 +61,6 @@ mla.controller = (function (){
         selectedWord = splicedVocabulary[rand];
 
         splicedVocabulary.splice(rand, 1);
-        return selectedWord;
         
     }
     
@@ -91,14 +90,24 @@ mla.controller = (function (){
         // places words in array for displaying
         console.log(newVocabulary);
         console.log(randArray);
-        i =0;
-        array.push(selectedWord);
-    for (i; i< numberOfOptions; i++) {
-        array.push(newVocabulary[randArray[i]]);
+        randArray.randomizeArray();
+
+        if (selectedWord.hasOwnProperty('image')) {
+            array.push(selectedWord.getImage());
+        }else {
+        array.push(selectedWord.getEnglishWord())
+        };
+    for (i= 0; i< numberOfOptions; i++) {
+        array.push(newVocabulary[randArray[i]].getMaoriWord());
     }
         // sends data to view;
-        array.randomizeArray();
-        that.view.displayTextQuestion();
+        ;
+        console.log(array);
+        if (selectedWord.hasOwnProperty('image')) {
+            this.view.displayImageQuestion(array);
+        } else {
+        this.view.displayTextQuestion(array);
+        };
     }
     
     initModule = function () {

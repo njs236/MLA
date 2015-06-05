@@ -11,6 +11,36 @@ div.mainSideDivs {
     height: 70%;
 }
 
+.modalScreen {
+    position: absolute;
+    z-index: 99999;
+    height:100%;
+    width: 100%;
+    background: #000000;
+    opacity: 0.4;
+    filter: alpha(opacity=40)
+}
+
+.modalScreen div {
+    height: 60%;
+    width: 60%;
+    margin: auto;
+    padding: auto;
+    opacity: 1;
+    background-color: #ffffff;
+}
+
+.modalScreen h1 {
+    color: #000000;
+    font-family: Helvetica, Times New Roman, serif;
+    font-size: 3em;
+}
+
+.modalScreen img {
+    height: 10em;
+    width: 15em;
+    float: left;
+}
 div.homeOptionsLeft {
     position: relative:
     top: 50%;
