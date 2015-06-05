@@ -34,7 +34,7 @@ View.prototype.viewResultsScreen = function () {
 }
 
 View.prototype.viewGameScreen = function (callback) {
-    this.displayScreen(aView.elements.gameScreen);
+    aView.displayScreen(aView.elements.gameScreen);
 }
 
 View.prototype.viewHomeScreen = function () {
@@ -95,10 +95,11 @@ View.prototype.writeSelectTable = function (items) {
         div.textContent = items[i];
         div.setAttribute('id', i);
         div.className = 'selectOptionsButton';
+        
         var k = i.valueOf();
-        div.addEventListener("click",function () {
-         aView.controller.selectGame(items[k]);         
-        });
+        
+        div.addEventListener("click",aView.controller.selectGame);
+         div.addEventListener("click", aView.viewGameScreen);
         selectScreenDiv.lastChild.appendChild(div);
     };
     /* The Back Button */

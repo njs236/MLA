@@ -1,9 +1,8 @@
 mla.controller = (function (){
-    var initModule, Controller, selectedWord, newVocabulary, splicedVocabulary, newTable;
+    var initModule, Controller, selectedWord, newVocabulary, splicedVocabulary, newTable, that;
     splicedVocabulary = [];
     
     Controller = function (view1, model1) {
-        var that = this;
        this.view = view1;
         this.model = model1;
         this.returnModel = function () {
@@ -13,21 +12,11 @@ mla.controller = (function (){
             return this.view;
         }
         this.display = function () {
-            var items = that.model.getMyVocabsForDisplay();
-            that.view.writeSelectTable(items);
+            var items = this.returnModel().getMyVocabsForDisplay();
+            this.returnView().writeSelectTable(items);
         };
         
-        this.selectGame = function (id) {
-        /* v1.1 Prepares the view for the game and gives information to the view.
-        */
-        console.log(id);
-        that.view.viewGameScreen();
-        var vocab = that.model.findVocab(id), word;
-        that.loadVocabulary(vocab);
-        console.log(newVocabulary);
-        that.randomSelectionOfWord();
-        that.loadTable(4);
-    }
+        
     };
     
     
@@ -37,7 +26,17 @@ mla.controller = (function (){
     
     **********************************/
 
-    
+    Controller.prototype.selectGame = function () {
+        /* v1.1 Prepares the view for the game and gives information to the view.
+        */
+        var id = this.id;
+        console.log(this.id);
+        var vocab = that.model.findVocab(id), word;
+        that.loadVocabulary(vocab);
+        console.log(newVocabulary);
+        that.randomSelectionOfWord();
+        that.loadTable(4);
+    }
     /******************************
     
     Game Screen
@@ -120,6 +119,7 @@ mla.controller = (function (){
         view.setController(controller);
         view.viewScreenListeners();
         controller.display();
+        that = controller;
         return controller; 
         
     }

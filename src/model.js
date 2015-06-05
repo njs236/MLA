@@ -104,7 +104,7 @@ mla.model = (function() {
         var i = 0;
         console.log(this);
         for (i; i < this.allMyVocabulary.length; i++ ) {
-            if (this.allMyVocabulary[i].vocabName == id ) {
+            if (this.allMyVocabulary[i].id == id ) {
                 return this.allMyVocabulary[i];
             }
         }
@@ -112,13 +112,15 @@ mla.model = (function() {
     };
     
     Model.prototype.addVocabulary = function(vocabName, arrayOfWords) {
-        var vocabulary = new Vocabulary(vocabName, arrayOfWords);
+        var id = this.allMyVocabulary.length;
+        var vocabulary = new Vocabulary(id, vocabName, arrayOfWords);
         this.allMyVocabulary.push(vocabulary);
         return vocabulary;
     };
     
     
-    Vocabulary = function (vocabName, arrayOfWords) {
+    Vocabulary = function (id, vocabName, arrayOfWords) {
+        this.id = id;
         this.vocabName = vocabName;
         this.allMyWords = [];
         this.addWords(arrayOfWords);

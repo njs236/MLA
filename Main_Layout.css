@@ -12,16 +12,26 @@ div.mainSideDivs {
 }
 
 .modalScreen {
-    position: absolute;
-    z-index: 99999;
-    height:100%;
-    width: 100%;
-    background: #000000;
-    opacity: 0.4;
-    filter: alpha(opacity=40)
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
 }
 
-.modalScreen div {
+.modalScreen:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalScreen > div {
     height: 60%;
     width: 60%;
     margin: auto;
