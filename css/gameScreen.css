@@ -1,9 +1,57 @@
+#gameScreen > div {
+    position: absolute;
+    width:100%;
+    height:92%;
+}
+
 #gameScreenLeft {
     height: 100%;
-    width: 25%;
+    width: calc(25% - 4em);
+    background: #000;
+    float:left;
+    padding: 2em;
+}
+
+#gameScreenLeft img {
+    width: 15em;
+    height: 10em;
 }
 
 #gameScreenRight {
     height:100%;
-    width: 75%;
+    width: calc(75% - 4em);
+    float:left;
+    padding: 2em;
 }
+
+#gameScreenQuestion {
+    font-family: Candara, Arial, sans-serif;
+    font-size: 3em;
+}
+
+.gameOption {
+    font-family: Candara, Arial, sans-serif;
+    font-size: 2em;
+}
+
+div.gameContentsDiv {
+    position: absolute;
+    bottom: 10%;
+    height: 10%;
+    width: 10%;
+}
+
+div.gameOptionsButton {
+    position: relative:
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0.5em;
+    text-align: center;
+    border: solid 1px;
+	border-color: black;
+    border-radius:0.5em;
+    cursor: pointer;
+    background-color: rgba(80, 80, 80, .8);
+    box-shadow: .5em .5em 1em rgba(0, 0, 0, 1)
+}
+

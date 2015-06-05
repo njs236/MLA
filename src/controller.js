@@ -14,6 +14,7 @@ mla.controller = (function (){
         this.display = function () {
             var items = this.returnModel().getMyVocabsForDisplay();
             this.returnView().writeSelectTable(items);
+            this.returnView().presentBackButton();
         };
         
         
@@ -98,6 +99,9 @@ mla.controller = (function (){
         };
     for (i= 0; i< numberOfOptions; i++) {
         array.push(newVocabulary[randArray[i]].getMaoriWord());
+        if (selectedWord.hasOwnProperty('image')) {
+            array.push(newVocabulary[randArray[i]].getSound())
+        }
     }
         // sends data to view;
         ;
@@ -107,6 +111,22 @@ mla.controller = (function (){
         } else {
         this.view.displayTextQuestion(array);
         };
+    }
+    
+    Controller.prototype.selectOption = function () {
+        var id = this.id;
+        var textContent = this.textContent;
+        if (textContent === selectedWord.getMaoriWord()) {
+            console.log('selectOption: you passed')
+        }
+        if (splicedVocabulary.length > 0) {
+        that.randomSelectionOfWord()
+        that.loadTable(4);
+        } else {
+            
+            console.log('selectOption: finished list');
+        }
+        
     }
     
     initModule = function () {

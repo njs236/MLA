@@ -33,7 +33,7 @@ View.prototype.viewResultsScreen = function () {
     
 }
 
-View.prototype.viewGameScreen = function (callback) {
+View.prototype.viewGameScreen = function () {
     aView.displayScreen(aView.elements.gameScreen);
 }
 
@@ -115,11 +115,28 @@ View.prototype.writeSelectTable = function (items) {
 }
 
 
+
+
 /*************************
 
 Game Screen
 
 *************************/
+
+View.prototype.presentBackButton = function () {
+    /* The Back Button */
+    var div;
+    var gameScreenLeft = document.getElementById('gameScreenLeft');
+    var surroundingDiv = document.createElement('DIV');
+    surroundingDiv.className = 'gameContentsDiv';
+    gameScreenLeft.appendChild(surroundingDiv);
+    div = document.createElement('DIV');
+    div.textContent = 'Back';
+    console.log(aView.viewGameScreen);
+    div.addEventListener("click", aView.displayLevelSelectScreen);
+    div.className = 'gameOptionsButton';
+    gameScreenLeft.lastChild.appendChild(div);
+}
 
 View.prototype.displayTextQuestion = function (array) {
     /*Array:
@@ -136,6 +153,7 @@ View.prototype.displayTextQuestion = function (array) {
     
     for (i = 1; i <= gameOptions.length; i++) {
         gameOptions[i-1].textContent = array[i];
+        gameOptions[i-1].addEventListener("click", aView.controller.selectOption);
     };
 };
 
@@ -145,6 +163,7 @@ View.prototype.displayImageQuestion = function (array) {
     var gameOptions = document.getElementsByClassName('gameOption');
     
     var image;
+    var audioSounds;
     /* 
     For clearing the data in the view;
     */
@@ -154,14 +173,35 @@ View.prototype.displayImageQuestion = function (array) {
         
     /*Array:
     [0] = Image for display;
-    [1-4] = Words chosen at Random;
+    [1, 3, 5, 7] = Words chosen at Random;
+    [2, 4, 6, 8] = Sounds of chosen Words.
     */
     image = document.createElement('IMG');
-    image.src = array[0];
-    question.innerHTML = 'What is this a picture of?' + image; 
+    image.src = 'images/' + array[0];
+    question.innerHTML = 'What is this a picture of?'
+    question.appendChild(image);; 
     
+    for (i = 1; i <= gameOptions.length; i++) {
+        gameOptions[i-1].textContent = array[2*i -1];
+        gameOptions[i-1].addEventListener("click", aView.controller.selectOption);
+    };
+    var populatingAudioDurationArray = [];
+    for (audioSounds = 0; audioSounds < gameOptions.length; audioSounds ++) {
+        var audio = document.createElement('AUDIO');
+        audio.src = 'audio/' + array[2*audioSounds+2];
+        populatingAudioDurationArray.push(audio)
+    }
+    
+    this.playAudio(populatingAudioDurationArray, 3000)
 }
 
+
+View.prototype.playAudio = function (array, duration) {
+    var i;
+    array[0].play();
+    
+    
+}
     initModule = function (elements) {
         aView = new View(elements);
         return aView;

@@ -154,6 +154,9 @@ mla.model = (function() {
         this.getMaoriWord = function () {
             return this.maoriWord;
         }
+        this.getSound = function () {
+            return this.maoriSound;
+        }
     }
     
     Array.prototype.isValidIndex = function (number) {
