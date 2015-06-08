@@ -5,6 +5,8 @@
 </title>
 
 <!-- Class Objects -->
+<script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script src="src/global.js"></script>
 <script src="src/app.js"></script>
 <script src="src/model.js"></script>
 <script src="src/view.js"></script>
@@ -12,12 +14,12 @@
 
 <script src="src/test.js"></script>
 
-
 <!-- CSS files -->
 <link href="layout.css" type="text/css" rel="stylesheet">
 <link href="css/selectScreen.css" type="text/css" rel="stylesheet">
 <link href="Main_Layout.css" type="text/css" rel="stylesheet">
 <link href="css/gameScreen.css" type="text/css" rel="stylesheet">
+<link href="css/resultsScreen.css" type="text/css" rel="stylesheet">
 
 <!-- init files -->
 
@@ -25,6 +27,7 @@
 <body>
 <div id="borderDiv">
     <div id="mainScreen" class="screen">
+    <img src="images/bg.jpg">
         <div>
             <div id="quitModal" class="modalScreen">
                 <div>
@@ -55,6 +58,7 @@
         </div>
     </div>
     <div id="selectScreen" class="screen" hidden>
+     <img src="images/bg.jpg">
     <div id="tempvariable" hidden></div>
         <div>
             <div id="selectScreenDiv"></div>
@@ -77,11 +81,24 @@
         </div>
     </div>
     <div id="resultsScreen" class="screen" hidden>
+     <img src="images/bg.jpg">
         <div>
+            <div id="resultsScreenDisplayArea">
+            </div>
+            <div id="caption">
+            </div>
         </div>
     </div>
 </div>
 <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1434589160191195',
+          xfbml      : true,
+          version    : 'v2.3'
+        });
+      };
+      
     (function () {
         mla.initModule();
     }())

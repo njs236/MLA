@@ -33,7 +33,7 @@ div.mainSideDivs {
 
 .modalScreen > div {
     height: 60%;
-    width: 60%;
+    width: 40%;
     margin: auto;
     padding: auto;
     opacity: 1;
@@ -63,4 +63,15 @@ div.homeOptionsLeft {
     cursor: pointer;
     background-color: rgba(80, 80, 80, .8);
     box-shadow: .5em .5em 1em rgba(0, 0, 0, 1)
+}
+
+.screen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+#mainScreen > img{
+    width: 100%;
+    height: 100%;
 }

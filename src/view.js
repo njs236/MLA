@@ -138,19 +138,38 @@ View.prototype.presentBackButton = function () {
     gameScreenLeft.lastChild.appendChild(div);
 }
 
+View.prototype.presentResults = function () {
+    /* The Back Button */
+    var div;
+    var resultsScreenCaption = document.getElementById('caption');
+    var surroundingDiv = document.createElement('DIV');
+    surroundingDiv.className = 'ResultsCaptionsDiv';
+    resultsScreenCaption.appendChild(surroundingDiv);
+    div = document.createElement('DIV');
+    div.textContent = 'Back';
+    div.addEventListener("click", aView.viewHomeScreen);
+    div.className = 'resultsOptionsButton';
+    resultsScreenCaption.lastChild.appendChild(div);
+}
+
 View.prototype.displayTextQuestion = function (array) {
+
+    var i;
+    var question = document.getElementById('gameScreenQuestion');
+    var gameOptions = document.getElementsByClassName('gameOption');
+    console.log(gameOptions.length);
+    // removing images from the options;    
+    for (i =0; i < gameOptions.length; i++) {
+        while ( gameOptions[i].hasChildNodes() ){
+			gameOptions[i].removeChild(gameOptions[i].firstChild);
+		};
+    }
+    
     /*Array:
     [0] = Word for display;
     [1-4] = Words chosen at Random;
     */
-    var i;
-    var question = document.getElementById('gameScreenWord');
-    
-    var gameOptions = document.getElementsByClassName('gameOption');
-    console.log(gameOptions.length);
-    
-    question.textContent = array[0];
-    
+    question.textContent = ' What is the Maori word for ' + array[0] + "?";
     for (i = 1; i <= gameOptions.length; i++) {
         gameOptions[i-1].textContent = array[i];
         gameOptions[i-1].addEventListener("click", aView.controller.selectOption);
@@ -164,43 +183,36 @@ View.prototype.displayImageQuestion = function (array) {
     
     var image;
     var audioSounds;
+    var i;
     /* 
     For clearing the data in the view;
     */
     while ( question.hasChildNodes() ){
 			question.removeChild(question.firstChild);
 		};
+    // removing images from the options;    
+    for (i =0; i < gameOptions.length; i++) {
+        while ( gameOptions[i].hasChildNodes() ){
+			gameOptions[i].removeChild(gameOptions[i].firstChild);
+		};
+    }
         
     /*Array:
-    [0] = Image for display;
-    [1, 3, 5, 7] = Words chosen at Random;
-    [2, 4, 6, 8] = Sounds of chosen Words.
+    [0] = Maori Word for display;
+    [1 -4] = Images chosen at Random;
     */
-    image = document.createElement('IMG');
-    image.src = 'images/' + array[0];
-    question.innerHTML = 'What is this a picture of?'
-    question.appendChild(image);; 
+
+    question.innerHTML = 'What image corresponds to the word ' + array[0] + "?";
     
     for (i = 1; i <= gameOptions.length; i++) {
-        gameOptions[i-1].textContent = array[2*i -1];
+        image = document.createElement('IMG');
+    image.src = 'images/' + array[i];
+        gameOptions[i-1].appendChild(image);
         gameOptions[i-1].addEventListener("click", aView.controller.selectOption);
     };
-    var populatingAudioDurationArray = [];
-    for (audioSounds = 0; audioSounds < gameOptions.length; audioSounds ++) {
-        var audio = document.createElement('AUDIO');
-        audio.src = 'audio/' + array[2*audioSounds+2];
-        populatingAudioDurationArray.push(audio)
-    }
-    
-    this.playAudio(populatingAudioDurationArray, 3000)
-}
-
-
-View.prototype.playAudio = function (array, duration) {
-    var i;
-    array[0].play();
-    
-    
+    var audio = document.createElement("AUDIO");
+    audio.src = "audio/" + aView.controller.getSelectedWord().getSound();
+    audio.play();
 }
     initModule = function (elements) {
         aView = new View(elements);
