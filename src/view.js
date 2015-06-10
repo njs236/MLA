@@ -132,7 +132,6 @@ View.prototype.presentBackButton = function () {
     gameScreenLeft.appendChild(surroundingDiv);
     div = document.createElement('DIV');
     div.textContent = 'Back';
-    console.log(aView.viewGameScreen);
     div.addEventListener("click", aView.displayLevelSelectScreen);
     div.className = 'gameOptionsButton';
     gameScreenLeft.lastChild.appendChild(div);

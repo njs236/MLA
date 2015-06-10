@@ -1,9 +1,14 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:og="http://ogp.me/ns#"
+      xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-<title>Reading and Writing Maori
+<title>Reading Maori
 </title>
-
+<meta property="og:url" content="http://upkk982cff39.pforpianist.koding.io/MLA/">
+<meta property="og:title" content="Reading Maori">
+<meta property="og:image" content="http://upkk982cff39.pforpianist.koding.io/MLA/images/Koru_flag.jpg"/>
+<meta property="og:description" content="Learn environment, colors, personal pronouns, greetings/farewells, saying how you are!">
 <!-- Class Objects -->
 <script id="facebook-jssdk" src="https://connect.facebook.net/en_US/sdk.js"></script>
 <script src="src/global.js"></script>
@@ -27,14 +32,14 @@
 <body>
 <div id="borderDiv">
     <div id="mainScreen" class="screen">
-    <img src="images/bg.jpg">
+    <img src="images/Koru_flag.svg">
         <div>
             <div id="quitModal" class="modalScreen">
                 <div>
                     <div><h1>Would you like to quit?</h1></div>
                     <div>
-                        <img id="yes" src="images/yes.png" />
-                        <img id="no" src="images/no.png" />
+                        <img id="yes" src="images/Yes.png" />
+                        <img id="no" src="images/No.png" />
                     </div>
                 </div>
             </div>
@@ -58,7 +63,7 @@
         </div>
     </div>
     <div id="selectScreen" class="screen" hidden>
-     <img src="images/bg.jpg">
+     <img src="images/Koru_flag.svg">
     <div id="tempvariable" hidden></div>
         <div>
             <div id="selectScreenDiv"></div>
@@ -67,10 +72,10 @@
     <div id="gameScreen" class="screen" hidden>
         <div>
             <div id="gameScreenLeft">
-                <img id="spacer"/ >
+                <img id="spacer" src="images/Koru_flag.svg">
             </div>
             <div id="gameScreenRight">
-                <div id = "gameScreenQuestion">What is the Maori word for <span id="gameScreenWord">?</div>
+                <div id = "gameScreenQuestion"></div>
                 <div id="gameScreenAnswers">
                     <div class="gameOption"></div>
                     <div class="gameOption"></div>
@@ -81,7 +86,7 @@
         </div>
     </div>
     <div id="resultsScreen" class="screen" hidden>
-     <img src="images/bg.jpg">
+     <img src="images/Koru_flag.svg">
         <div>
             <div id="resultsScreenDisplayArea">
             </div>
@@ -91,14 +96,6 @@
     </div>
 </div>
 <script>
-      window.fbAsyncInit = function() {
-        FB.init({
-          appId      : '1434589160191195',
-          xfbml      : true,
-          version    : 'v2.3'
-        });
-      };
-      
     (function () {
         mla.initModule();
     }())
